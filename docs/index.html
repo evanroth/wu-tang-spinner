@@ -39,30 +39,17 @@
   a:hover { color: var(--yellow); }
   ::selection { background: var(--yellow); color: #111; }
 
-  .window {
-    max-width: 860px;
-    margin: 0 auto;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 10px;
+  .screen { max-width: 860px; margin: 0 auto; }
+
+  .logo {
+    margin: 8px 0 28px;
+    color: var(--yellow);
+    font: 700 min(9px, calc((100vw - 32px) / 44)) / 1 var(--mono);
+    text-shadow: 0 .5px 0 currentColor, 0 -.5px 0 currentColor; /* hide hairline gaps between rows */
+    letter-spacing: 0;
+    white-space: pre;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
   }
-  .titlebar {
-    position: relative;
-    height: 34px;
-    background: var(--bar);
-    display: flex;
-    align-items: center;
-    padding: 0 14px;
-    gap: 8px;
-  }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .titlebar .title {
-    position: absolute; left: 0; right: 0; text-align: center;
-    color: var(--dim); font-size: 13px; pointer-events: none;
-  }
-  .screen { padding: 28px clamp(16px, 4vw, 36px) 36px; }
 
   .prompt { color: var(--dim); margin: 36px 0 10px; }
   .prompt:first-child { margin-top: 0; }
@@ -132,13 +119,12 @@
   ul.words li::before { content: "✻ "; }
 
   footer {
-    max-width: 860px; margin: 18px auto 0;
+    max-width: 860px; margin: 40px auto 0;
     color: var(--dim); font-size: 13px; text-align: center;
   }
 
   @media (max-width: 520px) {
     body { font-size: 14px; padding-top: 16px; }
-    .titlebar .title { display: none; }
     .demo { margin-left: -16px; margin-right: -16px; }
     .demo img { border-radius: 0; border-left: 0; border-right: 0; }
     .demo figcaption { padding: 0 16px; }
@@ -150,14 +136,47 @@
 </head>
 <body>
   <main class="window">
-    <div class="titlebar" aria-hidden="true">
-      <span class="dot" style="background:#ff5f57"></span>
-      <span class="dot" style="background:#febc2e"></span>
-      <span class="dot" style="background:#28c840"></span>
-      <span class="title">36-spinners — bash</span>
-    </div>
-
     <div class="screen">
+      <pre class="logo" role="img" aria-label="The Wu-Tang Clan W logo, drawn in block characters">       ▄█▄▄▄
+      ████████▄▄▄                                            ▄▄██▄
+     ██████████████▄▄                                    ▄▄███████▄
+    ▄███████████████████▄▄                           ▄▄████████████▄
+   ▄█████████████████████████▄                   ▄▄█████████████████▄
+   ██████████████████████████▀               ▄▄██████████████████████▄
+  ██████████████████████████▀              ███████████████████████████
+ ▄█████████████████████████▀               ▀██████████████████████████▄
+ ██████████████████████████                 ███████████████████████████
+ ██████████████████████████          ▄▄▄     ██████████████████████████
+███████████████████████████        ▄████▄    ███████████████████████████
+███████████████████████████      ▄███████▄   ███████████████████████████
+███████████████████████████   ▄███████████  ████████████████████████████
+████████████████████████████▄  ▀██████████▄▄████████████████████████████
+██████████████████████████████▄▄████████████████████████████████████████
+████████████████████████████████████████████████████████████████████████
+████████████████████████████████████████████████████████████████████████
+▀███████████████████████████████████████████████████████████████████████
+ ███████████████████████████████████████████████████████████████████████
+ ███████████████████████████████████████████████████████████████████████
+  █████████████████████████████████████████████████████████████████████
+  █████████████████████████████████████████████████████████████████████
+   ███████████████████████████████████▀ ▀█████████████████████████████▀
+   ▀██████████████████████████████████   ▀████████████████████████████
+    ██████████████████████████████████    ███████████████████████████
+     █████████████████████████████████    ██████████████████████████▀
+      ████████████████████████████████     ████████████████████████▀
+       ███████████████████████████████     ███████████████████████▀
+        ▀█████████████████████████████     ██████████████████████▀
+          ████████████████████████████      ████████████████████▀
+           ▀██████████████████████████▄     ███████████████████
+             ▀█████████████████████████     █████████████████▀
+                ▀██████████████████████     ███████████████▀
+                   ▀████████████████████    ██████████████
+                       ▀▀███████████████    ▀███████████▀
+                            ▀▀▀▀█████████    ████████▀▀
+                                             ██████▀
+                                             ████▀
+                                             █▀</pre>
+
       <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">echo $PROJECT</span></div>
       <h1 class="hero-title">36 Spinners<span class="cursor" aria-hidden="true"></span></h1>
       <p class="tagline">Wu-Tang Clan spinner words for Claude Code.</p>
@@ -173,8 +192,8 @@
 
       <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">cat README</span></div>
       <div class="out">
-        <p>While Claude Code works, it shows a word next to the spinner: <span class="orange">Jogging…</span>, <span class="orange">Pondering…</span>. 36 Spinners swaps those for Wu-Tang Clan song titles and lines: <span class="orange">Bombing atomically…</span>, <span class="orange">Protecting ya neck…</span>, <span class="orange">Feeling like a snail in the ocean…</span></p>
-        <p>93 of them, mostly from <em>Enter the Wu-Tang (36 Chambers)</em>. <a href="https://github.com/evanroth/wu-tang-spinner/blob/main/SOURCES.md">See where each one comes from.</a></p>
+        <p>While Claude Code works, it shows a word next to the spinner: <span class="orange">Jogging…</span>, <span class="orange">Pondering…</span>. 36 Spinners swaps those for Wu-Tang Clan song titles and lines: <span class="orange">Bombing atomically…</span>, <span class="orange">Protecting ya neck…</span>, <span class="orange">Forming like Voltron…</span></p>
+        <p>94 of them, mostly from <em>Enter the Wu-Tang (36 Chambers)</em>. <a href="https://github.com/evanroth/wu-tang-spinner/blob/main/SOURCES.md">See where each one comes from.</a></p>
       </div>
 
       <div class="prompt" id="install"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd"><h2>install</h2></span></div>
@@ -199,16 +218,16 @@
         <div class="codeblock"><pre>curl -fsSL https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/uninstall.sh | bash</pre><button class="copy" type="button">copy</button></div>
       </div>
 
-      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">shuf -n 8 spinner-verbs.json</span></div>
+      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">shuf -n 8 favorites.txt</span></div>
       <ul class="words" id="words">
         <li>Bringing da ruckus</li>
-        <li>Thinking first before you move</li>
-        <li>Making way for the merge of traffic</li>
-        <li>Just warming up a little bit</li>
-        <li>Finding the Tootsie Roll center</li>
+        <li>Bombing atomically</li>
+        <li>Protecting ya neck</li>
         <li>Forming like Voltron</li>
-        <li>Dropping science</li>
-        <li>The saga continues</li>
+        <li>Killa Beez on attack</li>
+        <li>Seeing pink hearts, yellow moons</li>
+        <li>Cooking up something marvelous</li>
+        <li>Entering the 36 Chambers</li>
       </ul>
 
       <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cursor" aria-hidden="true"></span></div>
@@ -234,24 +253,31 @@
     });
   });
 
-  // Show a random 8 from the real word list, if it loads
-  fetch("https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/spinner-verbs.json")
-    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function (data) {
-      var verbs = data.verbs.slice();
-      for (var i = verbs.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = verbs[i]; verbs[i] = verbs[j]; verbs[j] = t;
-      }
-      var ul = document.getElementById("words");
-      ul.innerHTML = "";
-      verbs.slice(0, 8).forEach(function (v) {
-        var li = document.createElement("li");
-        li.textContent = v;
-        ul.appendChild(li);
-      });
-    })
-    .catch(function () {});
+  // Show a random 8 of the favorites, a new pick on every visit
+  var FAVORITES = [
+    "Bringing da ruckus", "Shadowboxing", "Representing", "Wrecking it with the quickness",
+    "Forming like Voltron", "Swarming", "Letting your feet stomp",
+    "Getting on this mission like Indiana Jones", "Seeing pink hearts, yellow moons",
+    "Talking about the good old days", "Cooking up something marvelous", "Chessboxing",
+    "Killa Beez on attack", "Practicing tiger style", "Dollar dollar billing",
+    "Protecting ya neck", "Swinging through your town", "Moving on your left",
+    "Entering the 36 Chambers", "Bombing atomically", "Philosophizing", "Hypothesizing",
+    "Dropping mockeries", "Triumphing"
+  ];
+  (function () {
+    var picks = FAVORITES.slice();
+    for (var i = picks.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = picks[i]; picks[i] = picks[j]; picks[j] = t;
+    }
+    var ul = document.getElementById("words");
+    ul.innerHTML = "";
+    picks.slice(0, 8).forEach(function (v) {
+      var li = document.createElement("li");
+      li.textContent = v;
+      ul.appendChild(li);
+    });
+  })();
 </script>
 </body>
 </html>

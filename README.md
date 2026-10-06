@@ -4,9 +4,9 @@ Wu-Tang Clan spinner words for Claude Code. **[Project website](https://evanroth
 
 ![A terminal running Claude Code, with the spinner cycling through Wu-Tang phrases.](docs/36-spinners.gif)
 
-While Claude Code works, it shows a word next to the spinner: *Jogging…*, *Pondering…*. 36 Spinners swaps those words for Wu-Tang Clan song titles and lines: *Bombing atomically…*, *Protecting ya neck…*, *Thinking first before you move…*, *Feeling like a snail in the ocean…*
+While Claude Code works, it shows a word next to the spinner: *Jogging…*, *Pondering…*. 36 Spinners swaps those words for Wu-Tang Clan song titles and lines: *Bombing atomically…*, *Protecting ya neck…*, *Forming like Voltron…*, *Seeing pink hearts, yellow moons…*
 
-93 of them, mostly from *Enter the Wu-Tang (36 Chambers)*. See where each comes from in [SOURCES.md](SOURCES.md).
+94 of them, mostly from *Enter the Wu-Tang (36 Chambers)*. See where each comes from in [SOURCES.md](SOURCES.md).
 
 ## Install
 

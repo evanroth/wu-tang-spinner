@@ -1,5 +1,5 @@
 """Render docs/36-spinners.gif: a terminal running Claude Code, with the spinner
-cycling through 36 of the spinner words, a new one every 2 seconds.
+cycling through favorite spinner words, a new one every 2 seconds.
 
 Run from the project folder (macOS; needs Pillow and ffmpeg):
     python3 tools/make_gif.py
@@ -15,20 +15,17 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "36-spinners.gif"
 
-# The 36 shown in the GIF. All must be in spinner-verbs.json.
+# The favorites shown in the GIF, in this order. All must be in spinner-verbs.json.
+# (Same list as FAVORITES in docs/index.html.)
 PHRASES = [
-    "Bringing da ruckus", "Bombing atomically", "Protecting ya neck",
-    "Thinking first before you move", "Ruling everything around me", "Chessboxing",
-    "Tick-tock, keep tickin'", "Just warming up a little bit", "Entering the 36 Chambers",
-    "Making way for the merge of traffic", "Philosophizing", "Feeling like a snail in the ocean",
-    "Rappinin'", "Forming like Voltron", "Finding the Tootsie Roll center",
-    "Swarming", "Cooking up something marvelous", "Hypothesizing",
-    "Watching your step, kid", "Dropping science", "Combining and interlocking",
-    "Coming to a fork in the road", "Spelling M-E-T-H-O-D", "Programming fat bass lines",
-    "Dropping mockeries", "Putting the needle to the groove", "Taking your brain on spacewarp",
-    "Shadowboxing", "Pitching a no-hitter", "Thinking with logic",
-    "Killa Beez on attack", "Baking the cake", "Dollar dollar billing",
-    "Getting technical", "Never teaching the Wu-Tang", "The saga continues",
+    "Bringing da ruckus", "Shadowboxing", "Representing", "Wrecking it with the quickness",
+    "Forming like Voltron", "Swarming", "Letting your feet stomp",
+    "Getting on this mission like Indiana Jones", "Seeing pink hearts, yellow moons",
+    "Talking about the good old days", "Cooking up something marvelous", "Chessboxing",
+    "Killa Beez on attack", "Practicing tiger style", "Dollar dollar billing",
+    "Protecting ya neck", "Swinging through your town", "Moving on your left",
+    "Entering the 36 Chambers", "Bombing atomically", "Philosophizing", "Hypothesizing",
+    "Dropping mockeries", "Triumphing",
 ]
 
 FPS = 5                      # 200 ms per frame
@@ -121,7 +118,7 @@ def frame(n):
 def main():
     verbs = set(json.loads((ROOT / "spinner-verbs.json").read_text())["verbs"])
     missing = [p for p in PHRASES if p not in verbs]
-    assert len(PHRASES) == 36 and not missing, (len(PHRASES), missing)
+    assert not missing, missing
     longest = max(len(p) for p in PHRASES) + 1 + 3 + len("(99s · esc to interrupt)")
     assert longest <= COLS, longest
 

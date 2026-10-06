@@ -72,6 +72,7 @@ Generated from `wu-tang-spinners.xlsx` by `tools/export_verbs.py`.
 | Ripping the charts apart | Protect Ya Neck | Enter the Wu-Tang (36 Chambers), 1993 | Inspectah Deck |
 | Swinging through your town | Protect Ya Neck | Enter the Wu-Tang (36 Chambers), 1993 | Inspectah Deck |
 | Making more noise than heavy metal | Protect Ya Neck | Enter the Wu-Tang (36 Chambers), 1993 | Inspectah Deck |
+| Moving on your left | Protect Ya Neck | Enter the Wu-Tang (36 Chambers), 1993 | Method Man |
 | Coming 'round the mountain | Protect Ya Neck | Enter the Wu-Tang (36 Chambers), 1993 | RZA |
 | Never teaching the Wu-Tang | Conclusion | Enter the Wu-Tang (36 Chambers), 1993 | Sample |
 | Entering the 36 Chambers | (album title) | Enter the Wu-Tang (36 Chambers), 1993 |  |
