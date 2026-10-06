@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>36 Spinners</title>
+<meta name="description" content="Wu-Tang Clan spinner words for Claude Code. Bombing atomically… Protecting ya neck… By Evan Roth.">
+<meta property="og:title" content="36 Spinners">
+<meta property="og:description" content="Wu-Tang Clan spinner words for Claude Code. By Evan Roth.">
+<meta property="og:image" content="36-spinners-poster.png">
+<meta name="theme-color" content="#0e0e0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #0e0e0e;
+    --bg: #1c1c1c;
+    --bar: #2c2c2c;
+    --line: #333;
+    --text: #d6d6d6;
+    --dim: #8b8b8b;
+    --green: #7fd18b;
+    --blue: #6cb6ff;
+    --yellow: #f5c518;
+    --orange: #d77757;
+    --mono: "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text);
+    font: 15px/1.65 var(--mono);
+    padding: 32px 16px 48px;
+  }
+  a { color: var(--blue); text-underline-offset: 3px; }
+  a:hover { color: var(--yellow); }
+  ::selection { background: var(--yellow); color: #111; }
+
+  .window {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  }
+  .titlebar {
+    position: relative;
+    height: 34px;
+    background: var(--bar);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .titlebar .title {
+    position: absolute; left: 0; right: 0; text-align: center;
+    color: var(--dim); font-size: 13px; pointer-events: none;
+  }
+  .screen { padding: 28px clamp(16px, 4vw, 36px) 36px; }
+
+  .prompt { color: var(--dim); margin: 36px 0 10px; }
+  .prompt:first-child { margin-top: 0; }
+  .prompt .path { color: var(--blue); }
+  .prompt .ps1 { color: var(--green); }
+  .prompt .cmd { color: var(--text); }
+  h1, h2 { font-size: inherit; margin: 0; display: inline; font-weight: 400; }
+
+  .hero-title {
+    font-size: clamp(34px, 8vw, 56px);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--yellow);
+    margin: 4px 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .cursor {
+    display: inline-block; width: .55em; height: .9em; margin-left: .12em;
+    background: var(--yellow); vertical-align: -0.05em;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .tagline { margin: 0; font-size: 17px; }
+  .byline { margin: 4px 0 0; color: var(--dim); }
+
+  .demo { margin: 28px 0 0; }
+  .demo img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--line); border-radius: 6px;
+  }
+  .demo figcaption { color: var(--dim); font-size: 13px; margin-top: 8px; }
+
+  p { margin: 0 0 12px; max-width: 70ch; }
+  .out { padding-left: 2ch; }
+  .note { color: var(--dim); }
+  .orange { color: var(--orange); }
+  code { font-family: var(--mono); color: var(--yellow); }
+
+  .codeblock {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #121212;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 12px 12px 14px;
+    margin: 0 0 14px;
+  }
+  .codeblock pre {
+    flex: 1; min-width: 0; margin: 0;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+    font: 14px/1.6 var(--mono); color: var(--text);
+  }
+  .codeblock pre::before { content: "$ "; color: var(--green); }
+  .copy {
+    flex: none;
+    font: 12px var(--mono);
+    color: var(--dim); background: transparent;
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 3px 9px; cursor: pointer;
+  }
+  .copy:hover, .copy:focus-visible { color: var(--yellow); border-color: var(--yellow); outline: none; }
+
+  ul.words { list-style: none; padding: 0 0 0 2ch; margin: 0 0 12px; columns: 2 18ch; column-gap: 3ch; }
+  ul.words li { color: var(--orange); break-inside: avoid; }
+  ul.words li::before { content: "✻ "; }
+
+  footer {
+    max-width: 860px; margin: 18px auto 0;
+    color: var(--dim); font-size: 13px; text-align: center;
+  }
+
+  @media (max-width: 520px) {
+    body { font-size: 14px; padding-top: 16px; }
+    .titlebar .title { display: none; }
+    .demo { margin-left: -16px; margin-right: -16px; }
+    .demo img { border-radius: 0; border-left: 0; border-right: 0; }
+    .demo figcaption { padding: 0 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="window">
+    <div class="titlebar" aria-hidden="true">
+      <span class="dot" style="background:#ff5f57"></span>
+      <span class="dot" style="background:#febc2e"></span>
+      <span class="dot" style="background:#28c840"></span>
+      <span class="title">36-spinners — bash</span>
+    </div>
+
+    <div class="screen">
+      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">echo $PROJECT</span></div>
+      <h1 class="hero-title">36 Spinners<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="tagline">Wu-Tang Clan spinner words for Claude Code.</p>
+      <p class="byline">Made by <a href="https://evan-roth.com">Evan Roth</a> · <a href="https://github.com/evanroth/wu-tang-spinner">Code on GitHub</a></p>
+
+      <figure class="demo">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="36-spinners-poster.png">
+          <img src="36-spinners.gif" width="1353" height="846"
+               alt="A terminal running Claude Code. The spinner line cycles through Wu-Tang phrases every two seconds: Bringing da ruckus, Bombing atomically, Protecting ya neck, Thinking first before you move, and more.">
+        </picture>
+      </figure>
+
+      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">cat README</span></div>
+      <div class="out">
+        <p>While Claude Code works, it shows a word next to the spinner: <span class="orange">Jogging…</span>, <span class="orange">Pondering…</span>. 36 Spinners swaps those for Wu-Tang Clan song titles and lines: <span class="orange">Bombing atomically…</span>, <span class="orange">Protecting ya neck…</span>, <span class="orange">Feeling like a snail in the ocean…</span></p>
+        <p>93 of them, mostly from <em>Enter the Wu-Tang (36 Chambers)</em>. <a href="https://github.com/evanroth/wu-tang-spinner/blob/main/SOURCES.md">See where each one comes from.</a></p>
+      </div>
+
+      <div class="prompt" id="install"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd"><h2>install</h2></span></div>
+      <div class="out">
+        <p>Paste this into Terminal:</p>
+        <div class="codeblock"><pre>curl -fsSL https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/install.sh | bash</pre><button class="copy" type="button">copy</button></div>
+        <p>Then start a new Claude Code session. Sessions already running keep their old words until you restart them.</p>
+        <p class="note">The installer backs up <code>~/.claude/settings.json</code>, then adds the words to it. Your other settings stay as they are. It needs <code>jq</code>, which comes with recent versions of macOS (on Linux: <code>sudo apt install jq</code>).</p>
+        <p>To mix the Wu-Tang words in with Claude's usual ones instead of replacing them:</p>
+        <div class="codeblock"><pre>curl -fsSL https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/install.sh | bash -s -- --append</pre><button class="copy" type="button">copy</button></div>
+      </div>
+
+      <div class="prompt" id="update"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd"><h2>update</h2></span></div>
+      <div class="out">
+        <p>Run the install command again. It swaps in the latest word list.</p>
+        <div class="codeblock"><pre>curl -fsSL https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/install.sh | bash</pre><button class="copy" type="button">copy</button></div>
+      </div>
+
+      <div class="prompt" id="uninstall"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd"><h2>uninstall</h2></span></div>
+      <div class="out">
+        <p>Removes the words (after another backup), and Claude goes back to its own.</p>
+        <div class="codeblock"><pre>curl -fsSL https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/uninstall.sh | bash</pre><button class="copy" type="button">copy</button></div>
+      </div>
+
+      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cmd">shuf -n 8 spinner-verbs.json</span></div>
+      <ul class="words" id="words">
+        <li>Bringing da ruckus</li>
+        <li>Thinking first before you move</li>
+        <li>Making way for the merge of traffic</li>
+        <li>Just warming up a little bit</li>
+        <li>Finding the Tootsie Roll center</li>
+        <li>Forming like Voltron</li>
+        <li>Dropping science</li>
+        <li>The saga continues</li>
+      </ul>
+
+      <div class="prompt"><span class="path">~</span> <span class="ps1">$</span> <span class="cursor" aria-hidden="true"></span></div>
+    </div>
+  </main>
+
+  <footer>
+    By <a href="https://evan-roth.com">Evan Roth</a>. <a href="https://github.com/evanroth/wu-tang-spinner">Code on GitHub</a>. Public domain (CC0).
+  </footer>
+
+<script>
+  // Copy buttons
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.previousElementSibling.textContent;
+      var done = function () {
+        btn.textContent = "copied";
+        setTimeout(function () { btn.textContent = "copy"; }, 1500);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      }
+    });
+  });
+
+  // Show a random 8 from the real word list, if it loads
+  fetch("https://raw.githubusercontent.com/evanroth/wu-tang-spinner/main/spinner-verbs.json")
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (data) {
+      var verbs = data.verbs.slice();
+      for (var i = verbs.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = verbs[i]; verbs[i] = verbs[j]; verbs[j] = t;
+      }
+      var ul = document.getElementById("words");
+      ul.innerHTML = "";
+      verbs.slice(0, 8).forEach(function (v) {
+        var li = document.createElement("li");
+        li.textContent = v;
+        ul.appendChild(li);
+      });
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>
