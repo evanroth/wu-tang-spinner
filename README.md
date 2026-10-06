@@ -1,6 +1,6 @@
 # 36 Spinners
 
-Wu-Tang Clan spinner words for Claude Code. **[Project website](https://evanroth.github.io/wu-tang-spinner/)**
+Wu-Tang Clan spinner words for Claude Code. **[Project website](https://36-spinners.evan-roth.com)**
 
 ![A terminal running Claude Code, with the spinner cycling through Wu-Tang phrases.](docs/36-spinners.gif)
 
